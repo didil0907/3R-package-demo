@@ -2,12 +2,17 @@
 
 import click
 
-from example.demo_module import hello_world
+from example.demo_module import build_pyramid
 
 
 @click.command()
-@click.option("--message", prompt="message", help="Type a message to say")
+@click.option(
+    "--height",
+    type=int,
+    prompt="Pyramid height",
+    help="Number of levels for the pyramid",
+)
 @click.version_option()
-def example_cli(message):
-    """Example script. This function is referenced in setup.cfg"""
-    click.echo(hello_world(message))
+def example_cli(height):
+    """Print a star pyramid with the specified height."""
+    click.echo(build_pyramid(height))
